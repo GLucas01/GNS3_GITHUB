@@ -1,0 +1,463 @@
+Y1:
+configure terminal
+ipv6 unicast-routing
+ipv6 router ospf 1
+router-id 1.1.1.1
+redistribute connected
+end
+
+configure terminal
+interface GigabitEthernet 1/0
+ipv6 enable
+ipv6 address 2001:192:169:31::21/64
+no shutdown
+ipv6 ospf 1 area 0
+exit
+interface GigabitEthernet 2/0
+ipv6 enable
+ipv6 address 2001:192:168:21::1/64
+no shutdown
+ipv6 ospf 1 area 0
+exit
+interface fastEthernet 0/0
+ipv6 enable
+ipv6 address 2001:192:168:20::1/64
+no shutdown
+ipv6 ospf 1 area 0
+exit
+end
+
+configure terminal
+router bgp 2
+no bgp default ipv4-unicast
+bgp router-id 11.11.11.11 
+neighbor 2001:192:169:31::11 remote-as 1
+neighbor 22::22 remote-as 2
+neighbor 22::22 update-source  loopback1
+neighbor 23::23 remote-as 2
+neighbor 23::23 update-source  loopback1
+neighbor 24::24 remote-as 2
+neighbor 24::24 update-source  loopback1
+neighbor 25::25 remote-as 2
+neighbor 25::25 update-source  loopback1
+neighbor 26::26 remote-as 2
+neighbor 26::26 update-source  loopback1
+neighbor 27::27 remote-as 2
+neighbor 27::27 update-source  loopback1
+address-family ipv6 unicast
+network 2001:192:168::/48
+network 2001:192:169::/48
+aggregate-address 2001:192:168::/48 summary-only
+aggregate-address 2001:192:169::/48 summary-only
+neighbor 2001:192:169:31::11 activate
+neighbor 22::22 activate
+neighbor 23::23 activate
+neighbor 24::24 activate
+neighbor 25::25 activate
+neighbor 26::26 activate
+neighbor 27::27 activate
+redistribute ospf 1
+end
+conf t
+interface Loopback1
+ipv6 address 21::21/128
+ipv6 enable
+ipv6 ospf 1 area 0
+exit
+end
+
+Y2:
+configure terminal
+ipv6 unicast-routing
+ipv6 router ospf 2
+router-id 2.2.2.2
+redistribute connected
+end
+
+configure terminal
+interface GigabitEthernet 1/0
+ipv6 enable
+ipv6 address 2001:192:169:32::22/64
+no shutdown
+ipv6 ospf 2 area 0
+exit
+interface GigabitEthernet 2/0
+ipv6 enable
+ipv6 address 2001:192:168:26::2/64
+no shutdown
+ipv6 ospf 2 area 0
+exit
+interface fastEthernet 0/0
+ipv6 enable
+ipv6 address 2001:192:168:29::2/64
+no shutdown
+ipv6 ospf 2 area 0
+exit
+end
+
+configure terminal
+router bgp 2
+no bgp default ipv4-unicast
+bgp router-id 12.12.12.12
+neighbor 2001:192:169:32::12 remote-as 1
+neighbor 21::21 remote-as 2
+neighbor 21::21 update-source  loopback1
+neighbor 23::23 remote-as 2
+neighbor 23::23 update-source  loopback1
+neighbor 24::24 remote-as 2
+neighbor 24::24 update-source  loopback1
+neighbor 25::25 remote-as 2
+neighbor 25::25 update-source  loopback1
+neighbor 26::26 remote-as 2
+neighbor 26::26 update-source  loopback1
+neighbor 27::27 remote-as 2
+neighbor 27::27 update-source  loopback1
+address-family ipv6 unicast
+network 2001:192:168::/48
+network 2001:192:169::/48
+aggregate-address 2001:192:168::/48 summary-only
+aggregate-address 2001:192:169::/48 summary-only
+neighbor 2001:192:169:32::12 activate
+neighbor 21::21 activate
+neighbor 23::23 activate
+neighbor 24::24 activate
+neighbor 25::25 activate
+neighbor 26::26 activate
+neighbor 27::27 activate
+redistribute ospf 2
+end
+conf t
+interface Loopback1
+ipv6 address 22::22/128
+ipv6 enable
+ipv6 ospf 2 area 0
+exit
+end
+
+Y3:
+configure terminal
+ipv6 unicast-routing
+ipv6 router ospf 3
+router-id 3.3.3.3
+redistribute connected
+end
+
+configure terminal
+interface GigabitEthernet 1/0
+ipv6 enable
+ipv6 address 2001:192:168:25::3/64
+no shutdown
+ipv6 ospf 3 area 0
+exit
+interface GigabitEthernet 2/0
+ipv6 enable
+ipv6 address 2001:192:168:26::3/64
+no shutdown
+ipv6 ospf 3 area 0
+exit
+interface GigabitEthernet 3/0
+ipv6 enable
+ipv6 address 2001:192:168:20::3/64
+no shutdown
+ipv6 ospf 3 area 0
+exit
+interface fastEthernet 0/0
+ipv6 enable
+ipv6 address 2001:192:168:28::3/64
+no shutdown
+ipv6 ospf 3 area 0
+exit
+end
+conf t
+interface Loopback1
+ipv6 address 23::23/128
+ipv6 enable
+ipv6 ospf 3 area 0
+exit
+end
+configure terminal
+router bgp 2
+no bgp default ipv4-unicast
+bgp router-id 13.13.13.13
+
+neighbor 21::21 remote-as 2
+neighbor 21::21 update-source  loopback1
+neighbor 22::22 remote-as 2
+neighbor 22::22 update-source  loopback1
+neighbor 24::24 remote-as 2
+neighbor 24::24 update-source  loopback1
+neighbor 25::25 remote-as 2
+neighbor 25::25 update-source  loopback1
+neighbor 26::26 remote-as 2
+neighbor 26::26 update-source  loopback1
+neighbor 27::27 remote-as 2
+neighbor 27::27 update-source  loopback1
+address-family ipv6 unicast
+
+neighbor 21::21 activate
+neighbor 22::22 activate
+neighbor 24::24 activate
+neighbor 25::25 activate
+neighbor 26::26 activate
+neighbor 27::27 activate
+end
+
+
+Y4:
+configure terminal
+ipv6 unicast-routing
+ipv6 router ospf 4
+router-id 4.4.4.4
+redistribute connected
+end
+
+configure terminal
+interface GigabitEthernet 1/0
+ipv6 enable
+ipv6 address 2001:192:168:22::4/64
+no shutdown
+ipv6 ospf 4 area 0
+exit
+interface GigabitEthernet 2/0
+ipv6 enable
+ipv6 address 2001:192:168:21::4/64
+no shutdown
+ipv6 ospf 4 area 0
+exit
+interface GigabitEthernet 3/0
+ipv6 enable
+ipv6 address 2001:192:168:29::4/64
+no shutdown
+ipv6 ospf 4 area 0
+exit
+interface fastEthernet 0/0
+ipv6 enable
+ipv6 address 2001:192:168:28::4/64
+no shutdown
+ipv6 ospf 4 area 0
+exit
+end
+conf t
+interface Loopback1
+ipv6 address 24::24/128
+ipv6 enable
+ipv6 ospf 4 area 0
+exit
+end
+configure terminal
+router bgp 2
+no bgp default ipv4-unicast
+bgp router-id 14.14.14.14
+
+neighbor 21::21 remote-as 2
+neighbor 21::21 update-source  loopback1
+neighbor 22::22 remote-as 2
+neighbor 22::22 update-source  loopback1
+neighbor 23::23 remote-as 2
+neighbor 23::23 update-source  loopback1
+neighbor 25::25 remote-as 2
+neighbor 25::25 update-source  loopback1
+neighbor 26::26 remote-as 2
+neighbor 26::26 update-source  loopback1
+neighbor 27::27 remote-as 2
+neighbor 27::27 update-source  loopback1
+address-family ipv6 unicast
+
+neighbor 21::21 activate
+neighbor 22::22 activate
+neighbor 23::23 activate
+neighbor 25::25 activate
+neighbor 26::26 activate
+neighbor 27::27 activate
+end
+
+Y5:
+configure terminal
+ipv6 unicast-routing
+ipv6 router ospf 5
+router-id 5.5.5.5
+redistribute connected
+end
+
+configure terminal
+interface GigabitEthernet 1/0
+ipv6 enable
+ipv6 address 2001:192:168:22::5/64
+no shutdown
+ipv6 ospf 5 area 0
+exit
+interface GigabitEthernet 2/0
+ipv6 enable
+ipv6 address 2001:192:168:23::5/64
+no shutdown
+ipv6 ospf 5 area 0
+exit
+interface fastEthernet 0/0
+ipv6 enable
+ipv6 address 2001:192:168:27::5/64
+no shutdown
+ipv6 ospf 5 area 0
+exit
+end
+conf t
+interface Loopback1
+ipv6 address 25::25/128
+ipv6 enable
+ipv6 ospf 5 area 0
+exit
+end
+configure terminal
+router bgp 2
+no bgp default ipv4-unicast
+bgp router-id 15.15.15.15
+
+neighbor 21::21 remote-as 2
+neighbor 21::21 update-source  loopback1
+neighbor 22::22 remote-as 2
+neighbor 22::22 update-source  loopback1
+neighbor 23::23 remote-as 2
+neighbor 23::23 update-source  loopback1
+neighbor 24::24 remote-as 2
+neighbor 24::24 update-source  loopback1
+neighbor 26::26 remote-as 2
+neighbor 26::26 update-source  loopback1
+neighbor 27::27 remote-as 2
+neighbor 27::27 update-source  loopback1
+address-family ipv6 unicast
+
+neighbor 21::21 activate
+neighbor 22::22 activate
+neighbor 23::23 activate
+neighbor 24::24 activate
+neighbor 26::26 activate
+neighbor 27::27 activate
+end
+
+
+Y6:
+configure terminal
+ipv6 unicast-routing
+ipv6 router ospf 6
+router-id 6.6.6.6
+redistribute connected
+end
+
+configure terminal
+interface GigabitEthernet 1/0
+ipv6 enable
+ipv6 address 2001:192:168:25::6/64
+no shutdown
+ipv6 ospf 6 area 0
+end
+conf t
+interface Loopback1
+ipv6 address 25::25/128
+ipv6 enable
+ipv6 ospf 6 area 0
+exit
+end
+conf t
+interface GigabitEthernet 2/0
+ipv6 enable
+ipv6 address 2001:192:168:24::6/64
+no shutdown
+ipv6 ospf 6 area 0
+exit
+interface fastEthernet 0/0
+ipv6 enable
+ipv6 address 2001:192:168:27::6/64
+no shutdown
+ipv6 ospf 6 area 0
+exit
+end
+conf t
+interface Loopback1
+ipv6 address 26::26/128
+ipv6 enable
+ipv6 rip GNS3 enable
+exit
+end
+configure terminal
+router bgp 2
+no bgp default ipv4-unicast
+bgp router-id 16.16.16.16
+
+neighbor 21::21 remote-as 2
+neighbor 21::21 update-source  loopback1
+neighbor 22::22 remote-as 2
+neighbor 22::22 update-source  loopback1
+neighbor 23::23 remote-as 2
+neighbor 23::23 update-source  loopback1
+neighbor 24::24 remote-as 2
+neighbor 24::24 update-source  loopback1
+neighbor 25::25 remote-as 2
+neighbor 25::25 update-source  loopback1
+neighbor 27::27 remote-as 2
+neighbor 27::27 update-source  loopback1
+address-family ipv6 unicast
+
+neighbor 21::21 activate
+neighbor 22::22 activate
+neighbor 23::23 activate
+neighbor 24::24 activate
+neighbor 25::25 activate
+neighbor 27::27 activate
+end
+
+
+Y7:
+configure terminal
+ipv6 unicast-routing
+ipv6 router ospf 7
+router-id 7.7.7.7
+redistribute connected
+end
+
+configure terminal
+interface GigabitEthernet 1/0
+ipv6 enable
+ipv6 address 2001:192:168:24::7/64
+no shutdown
+ipv6 ospf 7 area 0
+exit
+interface GigabitEthernet 2/0
+ipv6 enable
+ipv6 address 2001:192:168:23::7/64
+no shutdown
+ipv6 ospf 7 area 0
+exit
+end
+conf t
+interface Loopback1
+ipv6 address 27::27/128
+ipv6 enable
+ipv6 ospf 7 area 0
+
+exit
+end
+configure terminal
+router bgp 2
+no bgp default ipv4-unicast
+bgp router-id 17.17.17.17
+
+neighbor 21::21 remote-as 2
+neighbor 21::21 update-source  loopback1
+neighbor 22::22 remote-as 2
+neighbor 22::22 update-source  loopback1
+neighbor 23::23 remote-as 2
+neighbor 23::23 update-source  loopback1
+neighbor 24::24 remote-as 2
+neighbor 24::24 update-source  loopback1
+neighbor 25::25 remote-as 2
+neighbor 25::25 update-source  loopback1
+neighbor 26::26 remote-as 2
+neighbor 26::26 update-source  loopback1
+address-family ipv6 unicast
+
+neighbor 21::21 activate
+neighbor 22::22 activate
+neighbor 23::23 activate
+neighbor 24::24 activate
+neighbor 25::25 activate
+neighbor 26::26 activate
+end

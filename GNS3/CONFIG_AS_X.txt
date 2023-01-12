@@ -1,0 +1,426 @@
+X1:
+configure terminal
+ipv6 unicast-routing
+ipv6 router rip GNS3
+redistribute connected
+end
+
+configure terminal
+interface GigabitEthernet 1/0
+ipv6 enable
+ipv6 address 2001:192:169:31::11/64
+no shutdown
+ipv6 rip GNS3 enable
+exit
+interface GigabitEthernet 2/0
+ipv6 enable
+ipv6 address 2001:192:167:11::1/64
+no shutdown
+ipv6 rip GNS3 enable
+exit
+interface fastEthernet 0/0
+ipv6 enable
+ipv6 address 2001:192:167:10::1/64
+no shutdown
+ipv6 rip GNS3 enable
+exit
+interface Loopback1
+ipv6 address 11::11/128
+ipv6 enable
+ipv6 rip GNS3 enable
+exit
+end
+
+configure terminal
+router bgp 1
+no bgp default ipv4-unicast
+bgp router-id 1.1.1.1
+neighbor 2001:192:169:31::21 remote-as 2
+neighbor 12::12 remote-as 1
+neighbor 12::12 update-source Loopback1
+neighbor 13::13 remote-as 1
+neighbor 13::13 update-source Loopback1
+neighbor 14::14 remote-as 1
+neighbor 14::14 update-source Loopback1
+neighbor 15::15 remote-as 1
+neighbor 15::15 update-source Loopback1
+neighbor 16::16 remote-as 1
+neighbor 16::16 update-source Loopback1
+neighbor 17::17 remote-as 1
+neighbor 17::17 update-source Loopback1
+address-family ipv6 unicast
+network 2001:192:167::/48
+network 2001:192:169::/48
+aggregate-address 2001:192:167::/48 summary-only
+aggregate-address 2001:192:169::/48 summary-only
+neighbor 2001:192:169:31::21 activate
+neighbor 12::12 activate
+neighbor 13::13 activate
+neighbor 14::14 activate
+neighbor 15::15 activate
+neighbor 16::16 activate
+neighbor 17::17 activate
+redistribute rip GNS3
+end
+
+X2:
+configure terminal
+ipv6 unicast-routing
+ipv6 router rip GNS3
+redistribute connected
+end
+
+configure terminal
+interface GigabitEthernet 1/0
+ipv6 enable
+ipv6 address 2001:192:169:32::12/64
+no shutdown
+ipv6 rip GNS3 enable
+exit
+interface GigabitEthernet 2/0
+ipv6 enable
+
+ipv6 address 2001:192:167:16::2/64
+no shutdown
+ipv6 rip GNS3 enable
+exit
+interface fastEthernet 0/0
+ipv6 enable
+ipv6 address 2001:192:167:19::2/64
+no shutdown
+ipv6 rip GNS3 enable
+exit
+interface Loopback1
+ipv6 address 12::12/128
+ipv6 enable
+ipv6 rip GNS3 enable
+exit
+end
+
+configure terminal
+router bgp 1
+no bgp default ipv4-unicast
+bgp router-id 2.2.2.2
+neighbor 2001:192:169:32::22 remote-as 2
+neighbor 11::11 remote-as 1
+neighbor 11::11 update-source Loopback1
+neighbor 13::13 remote-as 1
+neighbor 13::13 update-source Loopback1
+neighbor 14::14 remote-as 1
+neighbor 14::14 update-source Loopback1
+neighbor 15::15 remote-as 1
+neighbor 15::15 update-source Loopback1
+neighbor 16::16 remote-as 1
+neighbor 16::16 update-source Loopback1
+neighbor 17::17 remote-as 1
+neighbor 17::17 update-source Loopback1
+address-family ipv6 unicast
+network 2001:192:167::/48
+network 2001:192:169::/48
+aggregate-address 2001:192:167::/48 summary-only
+aggregate-address 2001:192:169::/48 summary-only
+neighbor 2001:192:169:32::22 activate
+neighbor 11::11 activate
+neighbor 13::13 activateaggregate-address 2001:192:169::/48 summary-only
+  aggregate-address 2001:192:168::/48 summary-only
+
+neighbor 14::14 activate
+neighbor 15::15 activate
+neighbor 16::16 activate
+neighbor 17::17 activate
+redistribute rip GNS3
+end
+
+
+X3:
+configure terminal
+ipv6 unicast-routing
+ipv6 router rip GNS3
+redistribute connected
+end
+
+configure terminal
+interface GigabitEthernet 1/0
+ipv6 enable
+ipv6 address 2001:192:167:15::3/64
+no shutdown
+ipv6 rip GNS3 enable
+exit
+interface GigabitEthernet 2/0
+ipv6 enable
+ipv6 address 2001:192:167:16::3/64
+no shutdown
+ipv6 rip GNS3 enable
+exit
+interface GigabitEthernet 3/0
+ipv6 enable
+ipv6 address 2001:192:167:10::3/64
+no shutdown
+ipv6 rip GNS3 enable
+exit
+interface fastEthernet 0/0
+ipv6 enable
+ipv6 address 2001:192:167:18::3/64
+no shutdown
+ipv6 rip GNS3 enable
+exit
+interface Loopback1
+ipv6 address 13::13/128
+ipv6 enable
+ipv6 rip GNS3 enable
+exit
+end
+configure terminal
+router bgp 1
+no bgp default ipv4-unicast
+bgp router-id 3.3.3.3
+neighbor 11::11 remote-as 1
+neighbor 11::11 update-source Loopback1
+neighbor 12::12 remote-as 1
+neighbor 12::12 update-source Loopback1
+neighbor 14::14 remote-as 1
+neighbor 14::14 update-source Loopback1
+neighbor 15::15 remote-as 1
+neighbor 15::15 update-source Loopback1
+neighbor 16::16 remote-as 1
+neighbor 16::16 update-source Loopback1
+neighbor 17::17 remote-as 1
+neighbor 17::17 update-source Loopback1
+address-family ipv6 unicast
+neighbor 11::11 activate
+neighbor 12::12 activate
+neighbor 14::14 activate
+neighbor 15::15 activate
+neighbor 16::16 activate
+neighbor 17::17 activate
+end
+
+X4:
+configure terminal
+ipv6 unicast-routing
+ipv6 router rip GNS3
+redistribute connected
+end
+
+configure terminal
+interface GigabitEthernet 1/0
+ipv6 enable
+ipv6 address 2001:192:167:12::4/64
+no shutdown
+ipv6 rip GNS3 enable
+exit
+interface GigabitEthernet 2/0
+ipv6 enable
+ipv6 address 2001:192:167:11::4/64
+no shutdown
+ipv6 rip GNS3 enable
+exit
+interface GigabitEthernet 3/0
+ipv6 enable
+ipv6 address 2001:192:167:19::4/64
+no shutdown
+ipv6 rip GNS3 enable
+exit
+interface fastEthernet 0/0
+ipv6 enable
+ipv6 address 2001:192:167:18::4/64
+no shutdown
+ipv6 rip GNS3 enable
+exit
+interface Loopback1
+ipv6 address 14::14/128
+ipv6 enable
+ipv6 rip GNS3 enable
+exit
+end
+configure terminal
+router bgp 1
+no bgp default ipv4-unicast
+bgp router-id 4.4.4.4
+neighbor 11::11 remote-as 1
+neighbor 11::11 update-source Loopback1
+neighbor 12::12 remote-as 1
+neighbor 12::12 update-source Loopback1
+neighbor 13::13 remote-as 1
+neighbor 13::13 update-source Loopback1
+neighbor 15::15 remote-as 1
+neighbor 15::15 update-source Loopback1
+neighbor 16::16 remote-as 1
+neighbor 16::16 update-source Loopback1
+neighbor 17::17 remote-as 1
+neighbor 17::17 update-source Loopback1
+address-family ipv6 unicast
+neighbor 11::11 activate
+neighbor 12::12 activate
+neighbor 13::13 activate
+neighbor 15::15 activate
+neighbor 16::16 activate
+neighbor 17::17 activate
+end
+
+X5:
+configure terminal
+ipv6 unicast-routing
+ipv6 router rip GNS3
+redistribute connected
+end
+
+configure terminal
+interface GigabitEthernet 1/0
+ipv6 enable
+ipv6 address 2001:192:167:12::5/64
+no shutdown
+ipv6 rip GNS3 enable
+exit
+interface GigabitEthernet 2/0
+ipv6 enable
+ipv6 address 2001:192:167:13::5/64
+no shutdown
+ipv6 rip GNS3 enable
+exit
+interface fastEthernet 0/0
+ipv6 enable
+ipv6 address 2001:192:167:17::5/64
+no shutdown
+ipv6 rip GNS3 enable
+exit
+interface Loopback1
+ipv6 address 15::15/128
+ipv6 enable
+ipv6 rip GNS3 enable
+exit
+end
+
+configure terminal
+router bgp 1
+no bgp default ipv4-unicast
+bgp router-id 5.5.5.5
+neighbor 11::11 remote-as 1
+neighbor 11::11 update-source Loopback1
+neighbor 12::12 remote-as 1
+neighbor 12::12 update-source Loopback1
+neighbor 13::13 remote-as 1
+neighbor 13::13 update-source Loopback1
+neighbor 14::14 remote-as 1
+neighbor 14::14 update-source Loopback1
+neighbor 16::16 remote-as 1
+neighbor 16::16 update-source Loopback1
+neighbor 17::17 remote-as 1
+neighbor 17::17 update-source Loopback1
+address-family ipv6 unicast
+neighbor 11::11 activate
+neighbor 12::12 activate
+neighbor 13::13 activate
+neighbor 14::14 activate
+neighbor 16::16 activate
+neighbor 17::17 activate
+end
+
+
+X6:
+configure terminal
+ipv6 unicast-routing
+ipv6 router rip GNS3
+redistribute connected
+end
+
+configure terminal
+interface GigabitEthernet 1/0
+ipv6 enable
+ipv6 address 2001:192:167:15::6/64
+no shutdown
+ipv6 rip GNS3 enable
+exit
+interface GigabitEthernet 2/0
+ipv6 enable
+ipv6 address 2001:192:167:14::6/64
+no shutdown
+ipv6 rip GNS3 enable
+exit
+interface fastEthernet 0/0
+ipv6 enable
+ipv6 address 2001:192:167:17::6/64
+no shutdown
+ipv6 rip GNS3 enable
+exit
+interface Loopback1
+ipv6 address 16::16/128
+ipv6 enable
+ipv6 rip GNS3 enable
+exit
+end
+configure terminal
+router bgp 1
+no bgp default ipv4-unicast
+bgp router-id 6.6.6.6
+neighbor 11::11 remote-as 1
+neighbor 11::11 update-source Loopback1
+neighbor 12::12 remote-as 1
+neighbor 12::12 update-source Loopback1
+neighbor 13::13 remote-as 1
+neighbor 13::13 update-source Loopback1
+neighbor 14::14 remote-as 1
+neighbor 14::14 update-source Loopback1
+neighbor 15::15 remote-as 1
+neighbor 15::15 update-source Loopback1
+neighbor 17::17 remote-as 1
+neighbor 17::17 update-source Loopback1
+address-family ipv6 unicast
+neighbor 11::11 activate
+neighbor 12::12 activate
+neighbor 13::13 activate
+neighbor 14::14 activate
+neighbor 15::15 activate
+neighbor 17::17 activate
+end
+
+X7:
+configure terminal
+ipv6 unicast-routing
+ipv6 router rip GNS3
+redistribute connected
+end
+
+configure terminal
+interface GigabitEthernet 1/0
+ipv6 enable
+ipv6 address 2001:192:167:14::7/64
+no shutdown
+ipv6 rip GNS3 enable
+exit
+interface GigabitEthernet 2/0
+ipv6 enable
+ipv6 address 2001:192:167:13::7/64
+no shutdown
+ipv6 rip GNS3 enable
+exit
+interface Loopback1
+ipv6 address 17::17/128
+ipv6 enable
+ipv6 rip GNS3 enable
+exit
+end
+configure terminal
+router bgp 1
+no bgp default ipv4-unicast
+bgp router-id 7.7.7.7
+neighbor 11::11 remote-as 1
+neighbor 11::11 update-source Loopback1
+neighbor 12::12 remote-as 1
+neighbor 12::12 update-source Loopback1
+neighbor 13::13 remote-as 1
+neighbor 13::13 update-source Loopback1
+neighbor 14::14 remote-as 1
+neighbor 14::14 update-source Loopback1
+neighbor 15::15 remote-as 1
+neighbor 15::15 update-source Loopback1
+neighbor 16::16 remote-as 1
+neighbor 16::16 update-source Loopback1
+address-family ipv6 unicast
+neighbor 11::11 activate
+neighbor 12::12 activate
+neighbor 13::13 activate
+neighbor 14::14 activate
+neighbor 15::15 activate
+neighbor 16::16 activate
+end
