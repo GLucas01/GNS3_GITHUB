@@ -7,47 +7,28 @@
               "interface_name":"GigabitEthernet1/0",
               "link":21,
               "border_interface":true
+              "border_relation":"peer"
            },
            {
               "interface_name":"GigabitEthernet2/0",
-              "link":14
+              "link":14,
+              "border_interface":false
            },
            
            {
               "interface_name":"FastEthernet0/0",
-              "link":13
+              "link":13,
+              "border_interface":false
            },
            {
                "interface_name":"Loopback1",
-               "link":11
+               "link":11,
+               "border_interface":false
            }
         ],
         "AS_number":1,
         "border_router":true,
         "bgp_apply":true,
-        "ibgp":{
-           "AS_number":1,
-           "neighbors":[
-              {
-                 "id":12
-              },
-              {
-                 "id":13
-              },
-              {
-                 "id":14
-              },
-              {
-                 "id":15
-              },
-              {
-                 "id":16
-              },
-              {
-                 "id":17
-              }
-           ]
-        },
         "IGP_protocol":"rip",
         "rip_process_name":"GNS3",
         "ebgp":{
@@ -67,47 +48,28 @@
               "interface_name":"GigabitEthernet1/0",
               "link":22,
               "border_interface":true
+              "border_relation":"peer"
            },
            {
               "interface_name":"GigabitEthernet2/0",
-              "link":13
+              "link":13,
+              "border_interface":false
            },
            
            {
               "interface_name":"FastEthernet0/0",
-              "link":14
+              "link":14,
+              "border_interface":false
            },
            {
                "interface_name":"Loopback1",
-               "link":12
+               "link":12,
+               "border_interface":false
            }
         ],
         "AS_number":1,
         "border_router":true,
         "bgp_apply":true,
-        "ibgp":{
-           "AS_number":1,
-           "neighbors":[
-              {
-                 "id":11
-              },
-              {
-                 "id":13
-              },
-              {
-                 "id":14
-              },
-              {
-                 "id":15
-              },
-              {
-                 "id":16
-              },
-              {
-                 "id":17
-              }
-           ]
-        },
         "IGP_protocol":"rip",
         "rip_process_name":"GNS3",
         "ebgp":{
@@ -129,47 +91,28 @@
            },
            {
               "interface_name":"GigabitEthernet2/0",
-              "link":12
+              "link":12,
+              "border_interface":false
            },
            {
               "interface_name":"GigabitEthernet3/0",
-              "link":11
+              "link":11,
+              "border_interface":false
            },
            {
               "interface_name":"FastEthernet0/0",
-              "link":14
+              "link":14,
+              "border_interface":false
            },
            {
                "interface_name":"Loopback1",
-               "link":13
+               "link":13,
+               "border_interface":false
            }
         ],
         "AS_number":1,
         "border_router":false,
         "bgp_apply":true,
-        "ibgp":{
-           "AS_number":1,
-           "neighbors":[
-              {
-                 "id":11
-              },
-              {
-                 "id":12
-              },
-              {
-                 "id":14
-              },
-              {
-                 "id":15
-              },
-              {
-                 "id":16
-              },
-              {
-                 "id":17
-              }
-           ]
-        },
         "IGP_protocol":"rip",
         "rip_process_name":"GNS3"
     },
@@ -184,47 +127,28 @@
            },
            {
               "interface_name":"GigabitEthernet2/0",
-              "link":11
+              "link":11,
+              "border_interface":false
            },
            {
               "interface_name":"GigabitEthernet3/0",
-              "link":12
+              "link":12,
+              "border_interface":false
            },
            {
               "interface_name":"FastEthernet0/0",
-              "link":13
+              "link":13,
+              "border_interface":false
            },
            {
                "interface_name":"Loopback1",
-               "link":14
+               "link":14,
+               "border_interface":false
            }
         ],
         "AS_number":1,
         "border_router":false,
         "bgp_apply":true,
-        "ibgp":{
-           "AS_number":1,
-           "neighbors":[
-              {
-                 "id":11
-              },
-              {
-                 "id":12
-              },
-              {
-                 "id":13
-              },
-              {
-                 "id":15
-              },
-              {
-                 "id":16
-              },
-              {
-                 "id":17
-              }
-           ]
-        },
         "IGP_protocol":"rip",
         "rip_process_name":"GNS3"
     },
@@ -239,44 +163,24 @@
            },
            {
               "interface_name":"GigabitEthernet2/0",
-              "link":17
+              "link":17,
+              "border_interface":false
            },
          
            {
               "interface_name":"FastEthernet0/0",
-              "link":16
+              "link":16,
+              "border_interface":false
            },
            {
                "interface_name":"Loopback1",
-               "link":15
+               "link":15,
+               "border_interface":false
            }
         ],
         "AS_number":1,
         "border_router":false,
         "bgp_apply":true,
-        "ibgp":{
-           "AS_number":1,
-           "neighbors":[
-              {
-                 "id":11
-              },
-              {
-                 "id":12
-              },
-              {
-                 "id":13
-              },
-              {
-                 "id":14
-              },
-              {
-                 "id":16
-              },
-              {
-                 "id":17
-              }
-           ]
-        },
         "IGP_protocol":"rip",
         "rip_process_name":"GNS3"
     },
@@ -291,44 +195,24 @@
            },
            {
               "interface_name":"GigabitEthernet2/0",
-              "link":17
+              "link":17,
+              "border_interface":false
            },
          
            {
               "interface_name":"FastEthernet0/0",
-              "link":15
+              "link":15,
+              "border_interface":false
            },
            {
                "interface_name":"Loopback1",
-               "link":16
+               "link":16,
+               "border_interface":false
            }
         ],
         "AS_number":1,
         "border_router":false,
         "bgp_apply":true,
-        "ibgp":{
-           "AS_number":1,
-           "neighbors":[
-              {
-                 "id":11
-              },
-              {
-                 "id":12
-              },
-              {
-                 "id":13
-              },
-              {
-                 "id":14
-              },
-              {
-                 "id":15
-              },
-              {
-                 "id":17
-              }
-           ]
-        },
         "IGP_protocol":"rip",
         "rip_process_name":"GNS3"
     },
@@ -343,41 +227,20 @@
            },
            {
               "interface_name":"GigabitEthernet2/0",
-              "link":15
+              "link":15,
+              "border_interface":false
            },
          
            
            {
                "interface_name":"Loopback1",
-               "link":17
+               "link":17,
+               "border_interface":false
            }
         ],
         "AS_number":1,
         "border_router":false,
         "bgp_apply":true,
-        "ibgp":{
-           "AS_number":1,
-           "neighbors":[
-              {
-                 "id":11
-              },
-              {
-                 "id":12
-              },
-              {
-                 "id":13
-              },
-              {
-                 "id":14
-              },
-              {
-                 "id":15
-              },
-              {
-                 "id":16
-              }
-           ]
-        },
         "IGP_protocol":"rip",
         "rip_process_name":"GNS3"
     },
@@ -389,49 +252,33 @@
               "interface_name":"GigabitEthernet1/0",
               "link":11,
               "border_interface":true
+              "border_relation":"peer"
            },
            {
               "interface_name":"GigabitEthernet2/0",
-              "link":24
+              "link":24,
+              "border_interface":false
            },
            
            {
               "interface_name":"FastEthernet0/0",
-              "link":23
+              "link":23,
+              "border_interface":false
            },
            {
                "interface_name":"Loopback1",
-               "link":21
+               "link":21,
+               "border_interface":false
            }
         ],
         "AS_number":2,
         "border_router":true,
         "bgp_apply":true,
-        "ibgp":{
-           "AS_number":2,
-           "neighbors":[
-              {
-                 "id":22
-              },
-              {
-                 "id":23
-              },
-              {
-                 "id":24
-              },
-              {
-                 "id":25
-              },
-              {
-                 "id":26
-              },
-              {
-                 "id":27
-              }
-           ]
-        },
         "IGP_protocol":"ospf",
-        
+        "ospf_metric":{
+            "is_apply":false
+            "cost":0
+        },
         "ebgp":{
             "neighbors":[
                {
@@ -450,6 +297,7 @@
               "interface_name":"GigabitEthernet1/0",
               "link":12,
               "border_interface":true
+              "border_relation":"peer"
            },
            {
               "interface_name":"GigabitEthernet2/0",
@@ -468,31 +316,11 @@
         "AS_number":2,
         "border_router":true,
         "bgp_apply":true,
-        "ibgp":{
-           "AS_number":2,
-           "neighbors":[
-              {
-                 "id":21
-              },
-              {
-                 "id":23
-              },
-              {
-                 "id":24
-              },
-              {
-                 "id":25
-              },
-              {
-                 "id":26
-              },
-              {
-                 "id":27
-              }
-           ]
-        },
         "IGP_protocol":"ospf",
-        
+        "ospf_metric":{
+            "is_apply":false
+            "cost":0
+        },
         "ebgp":{
             "neighbors":[
                {
@@ -512,49 +340,33 @@
            },
            {
               "interface_name":"GigabitEthernet2/0",
-              "link":22
+              "link":22,
+              "border_interface":false
            },
            {
               "interface_name":"GigabitEthernet3/0",
-              "link":21
+              "link":21,
+              "border_interface":false
            },
            {
               "interface_name":"FastEthernet0/0",
-              "link":24
+              "link":24,
+              "border_interface":false
            },
            {
                "interface_name":"Loopback1",
-               "link":23
+               "link":23,
+               "border_interface":false
            }
         ],
         "AS_number":2,
         "border_router":false,
         "bgp_apply":true,
-        "ibgp":{
-           "AS_number":2,
-           "neighbors":[
-              {
-                 "id":21
-              },
-              {
-                 "id":22
-              },
-              {
-                 "id":24
-              },
-              {
-                 "id":25
-              },
-              {
-                 "id":26
-              },
-              {
-                 "id":27
-              }
-           ]
-        },
-        "IGP_protocol":"ospf"
-        
+        "IGP_protocol":"ospf",
+        "ospf_metric":{
+            "is_apply":false
+            "cost":0
+        }
      },
      {
         "id":24,
@@ -567,49 +379,33 @@
            },
            {
               "interface_name":"GigabitEthernet2/0",
-              "link":21
+              "link":21,
+              "border_interface":false
            },
            {
               "interface_name":"GigabitEthernet3/0",
-              "link":22
+              "link":22,
+              "border_interface":false
            },
            {
               "interface_name":"FastEthernet0/0",
-              "link":23
+              "link":23,
+              "border_interface":false
            },
            {
                "interface_name":"Loopback1",
-               "link":24
+               "link":24,
+               "border_interface":false
            }
         ],
         "AS_number":2,
         "border_router":false,
         "bgp_apply":true,
-        "ibgp":{
-           "AS_number":2,
-           "neighbors":[
-              {
-                 "id":21
-              },
-              {
-                 "id":22
-              },
-              {
-                 "id":23
-              },
-              {
-                 "id":25
-              },
-              {
-                 "id":26
-              },
-              {
-                 "id":27
-              }
-           ]
-        },
-        "IGP_protocol":"ospf"
-        
+        "IGP_protocol":"ospf",
+        "ospf_metric":{
+            "is_apply":false
+            "cost":0
+        }
         
     },
     {
@@ -623,46 +419,29 @@
            },
            {
               "interface_name":"GigabitEthernet2/0",
-              "link":27
+              "link":27,
+              "border_interface":false
            },
          
            {
               "interface_name":"FastEthernet0/0",
-              "link":26
+              "link":26,
+              "border_interface":false
            },
            {
                "interface_name":"Loopback1",
-               "link":25
+               "link":25,
+               "border_interface":false
            }
         ],
         "AS_number":2,
         "border_router":false,
         "bgp_apply":true,
-        "ibgp":{
-           "AS_number":2,
-           "neighbors":[
-              {
-                 "id":21
-              },
-              {
-                 "id":22
-              },
-              {
-                 "id":23
-              },
-              {
-                 "id":24
-              },
-              {
-                 "id":26
-              },
-              {
-                 "id":27
-              }
-           ]
-        },
-        "IGP_protocol":"ospf"
-        
+        "IGP_protocol":"ospf",
+        "ospf_metric":{
+            "is_apply":false
+            "cost":0
+        }
         
     },
     {
@@ -676,45 +455,29 @@
            },
            {
               "interface_name":"GigabitEthernet2/0",
-              "link":27
+              "link":27,
+              "border_interface":false
            },
          
            {
               "interface_name":"FastEthernet0/0",
-              "link":25
+              "link":25,
+              "border_interface":false
            },
            {
                "interface_name":"Loopback1",
-               "link":26
+               "link":26,
+               "border_interface":false
            }
         ],
         "AS_number":2,
         "border_router":false,
         "bgp_apply":true,
-        "ibgp":{
-           "AS_number":2,
-           "neighbors":[
-              {
-                 "id":21
-              },
-              {
-                 "id":22
-              },
-              {
-                 "id":23
-              },
-              {
-                 "id":24
-              },
-              {
-                 "id":25
-              },
-              {
-                 "id":27
-              }
-           ]
-        },
-        "IGP_protocol":"ospf"
+        "IGP_protocol":"ospf",
+        "ospf_metric":{
+            "is_apply":false
+            "cost":0
+        }
        
         
     },
@@ -729,45 +492,27 @@
            },
            {
               "interface_name":"GigabitEthernet2/0",
-              "link":25
+              "link":25,
+              "border_interface":false
            },
          
            
            {
                "interface_name":"Loopback1",
-               "link":27
+               "link":27,
+               "border_interface":false
            }
         ],
         "AS_number":2,
         "border_router":false,
         "bgp_apply":true,
-        "ibgp":{
-           "AS_number":2,
-           "neighbors":[
-              {
-                 "id":21
-              },
-              {
-                 "id":22
-              },
-              {
-                 "id":23
-              },
-              {
-                 "id":24
-              },
-              {
-                 "id":25
-              },
-              {
-                 "id":26
-              }
-           ]
-        },
-        "IGP_protocol":"ospf"
+        "IGP_protocol":"ospf",
+        "ospf_metric":{
+            "is_apply":false
+            "cost":0
+        }
         
         
     }
-
 
 ]}
