@@ -54,7 +54,8 @@ def write_file() :
                 script+=str(x['link'])+str(r['id'])
             
             script+="::"+str(r['id'])+"/64\n"
-        elif r['border_router']!=0 and str(x['interface_name'])=="GigabitEthernet1/0" and x['border_interface']!=0 :
+        elif r['border_router']!=0 and x['border_interface']!=0 :
+        #elif r['border_router']!=0 and str(x['interface_name'])=="GigabitEthernet1/0" and x['border_interface']!=0 :
             script+=" negotiation auto\n"
             border_subnet="2001:192:"
             
@@ -93,14 +94,17 @@ def write_file() :
         script+=" bgp router-id "
         script+=str(r['id'])
         for x in range(3):
-            script+=":"+str(r['id'])
+            script+="."+str(r['id'])
         script+="\n"
         script+=" bgp log-neighbor-changes\n"
         script+=" no bgp default ipv4-unicast\n"
-        for x in r['ibgp']['neighbors']:
-            script+=" neighbor "+str(x['id'])+"::"+str(x['id'])+" remote-as "+str(floor(x['id']/10))+"\n"
-            script+=" neighbor "+str(x['id'])+"::"+str(x['id'])+" update-source Loopback1\n"
         
+
+        for y in json_object['routers'] :
+            if (y['AS_number']==r['AS_number'] and y['id']!=r['id']):
+                script+=" neighbor "+str(y['id'])+"::"+str(y['id'])+" remote-as "+str(y['AS_number'])+"\n"
+                script+=" neighbor "+str(y['id'])+"::"+str(y['id'])+" update-source Loopback1\n"
+         
         if r['border_router']!=0:
             for x in r['ebgp']['neighbors']:
                 script+=" neighbor "+border_subnet+str(x['id'])+" remote-as "+str(floor(x['id']/10))+"\n"
@@ -115,13 +119,22 @@ def write_file() :
                 script+=" redistribute rip "+r['rip_process_name']+"\n"
             elif r['IGP_protocol']=="ospf":
                 script+=" redistribute ospf "+str(r['id'])+"\n"
-            script+=" network 2001:192:"+str(r['AS_number'])+"::/48\n"
-            script+=" network "+border_subnet+"/48\n"
-            script+=" aggregate-address 2001:192:"+str(r['AS_number'])+"::/48 summary-only\n"
-            script+=" aggregate-address "+border_subnet+"/48 summary-only\n"
                 
-        for x in r['ibgp']['neighbors']:
-            script+=" neighbor "+str(x['id'])+"::"+str(x['id'])+" activate\n"
+            script+=" network 2001:192:"+str(r['AS_number'])+"::/48\n"
+            script+=" network "+border_subnet+"/64\n"
+            script+=" aggregate-address 2001:192:"+str(r['AS_number'])+"::/48 summary-only\n"
+            script+=" aggregate-address "+border_subnet+"/64 summary-only\n"
+            
+            
+        
+        
+        
+        for y in json_object['routers'] :
+            if (y['AS_number']==r['AS_number'] and y['id']!=r['id']):
+                script+=" neighbor "+str(y['id'])+"::"+str(y['id'])+" activate\n"
+                
+        
+        
         if r['border_router']!=0:
             for x in r['ebgp']['neighbors']:
                 script+=" neighbor "+border_subnet+str(x['id'])+" activate\n"
@@ -160,6 +173,6 @@ def write_file() :
 for r in json_object['routers'] :
     
     #ecrire dans le fichier json
-    destination=r['hostname']+".cfg"
+    destination=r['hostname']+".txt"
     with open(destination, "w") as outfile:
         outfile.write(write_file())
