@@ -148,7 +148,7 @@ def write_file() :
             script+=" router-id "
             script+=str(r['id'])
             for x in range(3):
-                script+=":"+str(r['id'])
+                script+="."+str(r['id'])
             script+="\n"
             script+=" redistribute connected\n"
         elif r['IGP_protocol']=="rip":
