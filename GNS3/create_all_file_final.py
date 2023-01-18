@@ -54,8 +54,8 @@ def write_file() :
                 script+=str(x['link'])+str(r['id'])
             
             script+="::"+str(r['id'])+"/64\n"
-        elif r['border_router']!=0 and x['border_interface']!=0 :
-        #elif r['border_router']!=0 and str(x['interface_name'])=="GigabitEthernet1/0" and x['border_interface']!=0 :
+        #elif r['border_router']!=0 and x['border_interface']!=0 :
+        elif r['border_router']!=0 and str(x['interface_name'])=="GigabitEthernet1/0" and x['border_interface']!=0 :
             script+=" negotiation auto\n"
             border_subnet="2001:192:"
             
@@ -173,6 +173,6 @@ def write_file() :
 for r in json_object['routers'] :
     
     #ecrire dans le fichier json
-    destination=r['hostname']+".txt"
+    destination=r['hostname']+".cfg"
     with open(destination, "w") as outfile:
         outfile.write(write_file())
