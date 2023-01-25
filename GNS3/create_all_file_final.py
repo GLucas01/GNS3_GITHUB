@@ -54,8 +54,8 @@ def write_file() :
                 script+=str(x['link'])+str(r['id'])
             
             script+="::"+str(r['id'])+"/64\n"
-        #elif r['border_router']!=0 and x['border_interface']!=0 :
-        elif r['border_router']!=0 and str(x['interface_name'])=="GigabitEthernet1/0" and x['border_interface']!=0 :
+        elif r['border_router']!=0 and x['border_interface']!=0 :
+        #elif r['border_router']!=0 and str(x['interface_name'])=="GigabitEthernet1/0" and x['border_interface']!=0 :
             script+=" negotiation auto\n"
             border_subnet="2001:192:"
             
