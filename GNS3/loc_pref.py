@@ -184,6 +184,6 @@ def write_file() :
 for r in json_object['routers'] :
     
     #ecrire dans le fichier json
-    destination=r['hostname']+".txt"
+    destination=r['hostname']+".cfg"
     with open(destination, "w") as outfile:
         outfile.write(write_file())
