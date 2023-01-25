@@ -88,7 +88,7 @@ def write_file() :
         if r['IGP_protocol']=="ospf":
             script+=" ipv6 ospf "+str(r['id'])+" area 0\n"
             if x['ospf_cost_apply']!=0:
-                script+=" ipv6 ospf cost "+str(x['ospf_cost']+"\n")
+                script+=" ipv6 ospf cost "+str(x['ospf_cost'])+"\n"
         elif r['IGP_protocol']=="rip":
             script+=" ipv6 rip "+r['rip_process_name']+" enable\n"
         script+="!\n"
@@ -184,6 +184,6 @@ def write_file() :
 for r in json_object['routers'] :
     
     #ecrire dans le fichier json
-    destination=r['hostname']+".cfg"
+    destination=r['hostname']+".txt"
     with open(destination, "w") as outfile:
         outfile.write(write_file())
