@@ -147,7 +147,7 @@ def write_file() :
                 
         if r['border_router']!=0 and r['local_pref']['metric_apply']!=0:
             for x in r['local_pref']['link']:
-                script+="  neighbor "+border_subnet+str(x['id'])+" route-map "+x['name']+" "+x['direction']
+                script+="  neighbor "+border_subnet+str(x['id'])+" route-map "+x['name']+" "+x['direction']+"\n"
         
         script+=" exit-address-family\n!\n"
         script+="ip forward-protocol nd\n!\n!\n"
@@ -165,6 +165,11 @@ def write_file() :
         elif r['IGP_protocol']=="rip":
             script+="ipv6 router rip "+ r['rip_process_name']+"\n"
             script+=" redistribute connected\n"
+            
+        if r['border_router']!=0 and r['local_pref']['metric_apply']!=0:
+            for x in r['local_pref']['link']:
+                script+="!\n!\nroute-map "+x['name']+" permit 10"
+                script+=" set local-preference 400\n"
         script+="!\n!\n!\n!\ncontrol-plane\n!\n!\n"
         script+="line con 0\n"
         script+=" exec-timeout 0 0\n"
