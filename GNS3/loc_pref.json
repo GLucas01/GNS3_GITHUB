@@ -36,7 +36,7 @@
           "link":[
               {
                   "id":21,
-                  "direction":"in"
+                  "direction":"in",
                   "name":"loc_pref21"
               }
           ]
