@@ -145,7 +145,7 @@ def write_file() :
             for x in r['ebgp']['neighbors']:
                 script+="  neighbor "+border_subnet+str(x['id'])+" activate\n"
                 
-        if r['border_router']!=0 && r['local_pref']['metric_apply']!=0:
+        if r['border_router']!=0 and r['local_pref']['metric_apply']!=0:
             for x in r['local_pref']['link']:
                 script+="  neighbor "+border_subnet+str(x['id'])+" route-map "+x['name']+" "+x['direction']
         
