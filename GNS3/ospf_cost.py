@@ -88,7 +88,7 @@ def write_file() :
         if r['IGP_protocol']=="ospf":
             script+=" ipv6 ospf "+str(r['id'])+" area 0\n"
             if x['ospf_cost_apply']!=0:
-                script+=" ipv6 ospf cost "+str(x['ospf_cost']+"\n")
+                script+=" ipv6 ospf cost "+str(x['ospf_cost'])+"\n"
         elif r['IGP_protocol']=="rip":
             script+=" ipv6 rip "+r['rip_process_name']+" enable\n"
         script+="!\n"
@@ -114,22 +114,22 @@ def write_file() :
         if r['border_router']!=0:
             for x in r['ebgp']['neighbors']:
                 script+=" neighbor "+border_subnet+str(x['id'])+" remote-as "+str(floor(x['id']/10))+"\n"
-        script+="!\n"
-        script+="address-family ipv4\n"
-        script+="exit-address-family\n"
-        script+="!\n"
+        script+=" !\n"
+        script+=" address-family ipv4\n"
+        script+=" exit-address-family\n"
+        script+=" !\n"
         
-        script+="address-family ipv6\n"
+        script+=" address-family ipv6\n"
         if r['border_router']!=0:
             if r['IGP_protocol']=="rip":
-                script+=" redistribute rip "+r['rip_process_name']+"\n"
+                script+="  redistribute rip "+r['rip_process_name']+"\n"
             elif r['IGP_protocol']=="ospf":
-                script+=" redistribute ospf "+str(r['id'])+"\n"
+                script+="  redistribute ospf "+str(r['id'])+"\n"
                 
-            script+=" network 2001:192:"+str(r['AS_number'])+"::/48\n"
-            script+=" network "+border_subnet+"/64\n"
-            script+=" aggregate-address 2001:192:"+str(r['AS_number'])+"::/48 summary-only\n"
-            script+=" aggregate-address "+border_subnet+"/64 summary-only\n"
+            script+="  network 2001:192:"+str(r['AS_number'])+"::/48\n"
+            script+="  network "+border_subnet+"/64\n"
+            script+="  aggregate-address 2001:192:"+str(r['AS_number'])+"::/48 summary-only\n"
+            script+="  aggregate-address "+border_subnet+"/64 summary-only\n"
             
             
         
@@ -137,13 +137,13 @@ def write_file() :
         
         for y in json_object['routers'] :
             if (y['AS_number']==r['AS_number'] and y['id']!=r['id']):
-                script+=" neighbor "+str(y['id'])+"::"+str(y['id'])+" activate\n"
+                script+="  neighbor "+str(y['id'])+"::"+str(y['id'])+" activate\n"
                 
         
         
         if r['border_router']!=0:
             for x in r['ebgp']['neighbors']:
-                script+=" neighbor "+border_subnet+str(x['id'])+" activate\n"
+                script+="  neighbor "+border_subnet+str(x['id'])+" activate\n"
         script+="exit-address-family\n!\n"
         script+="ip forward-protocol nd\n!\n!\n"
         script+="no ip http server\n"
