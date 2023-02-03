@@ -168,7 +168,7 @@ def write_file() :
             
         if r['border_router']!=0 and r['local_pref']['metric_apply']!=0:
             for x in r['local_pref']['link']:
-                script+="!\n!\nroute-map "+x['name']+" permit 10"
+                script+="!\n!\nroute-map "+x['name']+" permit 10\n"
                 script+=" set local-preference 400\n"
         script+="!\n!\n!\n!\ncontrol-plane\n!\n!\n"
         script+="line con 0\n"
